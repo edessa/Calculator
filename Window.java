@@ -603,23 +603,16 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 	//precondition:
 	//postcondition: Opens dialog of program information
 	private void loadInfo(){
-		JTextArea t = new JTextArea("Author: Eric Nguyen\n" +
-	    		"Version: 1.1\n" +
-	    		"License: Proprietary\nSystem: " + 
-	    		System.getProperty("os.name") + " " + 
-	    		System.getProperty("os.version") + "\n" +
-	    		"\u00a92009-2013. All rights reserved.", 5, 15);
+		JTextArea t = new JTextArea(5, 15);
 	    t.setEditable(false);
 	    
         JOptionPane.showMessageDialog(this, t, "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	//precondition:
-	//postcondition: Attempts to load license, determines output for license
 	private void loadLicense(){
 		File f = new File("data" + File.separator + "lic.bin");
 		
-		//If the license file exists
 		if(f.exists()){
 			try{
 				Scanner s = new Scanner(f);
@@ -627,11 +620,7 @@ public class Window extends JFrame implements ActionListener, WindowListener{
 				s.close();
 				
 				//If the user has replaced the file
-				if(!c.equals("ILWMTIT")){
-					JOptionPane.showMessageDialog(this, "This license is invalid.",	
-							"License Error", JOptionPane.ERROR_MESSAGE);
-					System.exit(0);
-				}
+			
 			}
 			catch(Exception e){}
 		}
